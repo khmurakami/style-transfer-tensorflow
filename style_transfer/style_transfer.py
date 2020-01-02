@@ -61,6 +61,31 @@ def load_img(path_to_img):
     img = img[tf.newaxis, :]
     return img
 
+def style_image(input_path, style_path, output_image):
+
+    """Style an image based on a input image
+
+    Args:
+        input_image (String): The input image you want to style
+        style_image (String): The style you want to apply on the input_image
+        output_image (String): The name you want to save the image
+
+    Return:
+        None
+
+    """
+    
+    content_image = load_img(input_path)
+    style_image = load_img(style_path)
+
+    # Get the Model from Tensorflow Hub
+    hub_module = hub.load('https://tfhub.dev/google/magenta/arbitrary-image-stylization-v1-256/1')
+    stylized_image = hub_module(tf.constant(content_image), tf.constant(style_image))[0]
+
+    # Convert the tensor output to an image
+    tensor_to_image(stylized_image).save(output_image)
+    print("Finished")
+
 
 if __name__ == "__main__":
 

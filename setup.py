@@ -1,13 +1,13 @@
 import setuptools
 
 setuptools.setup(
-    name="pymapillary",
+    name="style_transfer",
     version="0.0.3",
     author="Kalani Murakami",
     author_email="kalanimurakami1218@gmail.com",
-    description="Unofficial Python Wrapper Mapillary API",
-    packages=['pymapillary'],
-    install_requires=["requests", "wget"],
+    description="Quick Style Transfer",
+    packages=['style_transfer'],
+    install_requires=["tensorflow-gpu", "tensorflow_hub", "Pillow"],
     license="MIT",
-    url="https://github.com/khmurakami/pymapillary"
+    url="https://github.com/khmurakami/style-transfer-tensorflow.git"
 )
